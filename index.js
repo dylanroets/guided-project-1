@@ -19,6 +19,21 @@ async function getCharacters() {
   renderCharacters(characters);
 }
 
+async function getCharacters() {
+  let url = 'https://swapi2.azurewebsites.net/api/characters';
+
+  try {
+    const fetchedCharacters = await fetch(url)
+      .then(res => res.json())
+    characters.push(...fetchedCharacters);
+  }
+  catch (ex) {
+    console.error("Error reading characters.", ex.message);
+  }
+  console.log("All the characters are ", characters)
+  renderCharacters(characters);
+}
+
 const filterCharacters = () => {
   const searchString = document.querySelector("#searchString").value;
   const re = new RegExp(searchString, "i");
