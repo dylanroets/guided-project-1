@@ -59,7 +59,7 @@ const renderFilm = (film) => {
     charactersUL.innerHTML = characterList.join("");
     const planetList = film?.planets?.map(
       (planet) =>
-        `<li><a href="/character.html?id=${planet.id}">${planet.name}</li>`
+        `<li><a href="/planet.html?id=${planet.id}">${planet.name}</li>`
     );
     planetsUL.innerHTML = planetList.join("");
 };
