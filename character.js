@@ -52,13 +52,38 @@ async function fetchFilms(character) {
   return films;
 }
 
-const renderCharacter = character => {
-  document.title = `SWAPI - ${character?.name}`;  // Just to make the browser tab say their name
+// const renderCharacter = character => {
+//   document.title = `SWAPI - ${character?.name}`;  // Just to make the browser tab say their name
+//   nameH1.textContent = character?.name;
+//   heightSpan.textContent = character?.height;
+//   massSpan.textContent = character?.mass;
+//   birthYearSpan.textContent = character?.birth_year;
+//   homeworldSpan.innerHTML = `<a href="/planet.html?id=${character?.homeworld.id}">${character?.homeworld.name}</a>`;
+//   const filmsLis = character?.films?.map(film => `<li><a href="/film.html?id=${film.id}">${film.title}</li>`)
+//   filmsUl.innerHTML = filmsLis.join("");
+// }
+
+const renderCharacter = (character) => {
+  document.title = `SWAPI - ${character?.name}`;
   nameH1.textContent = character?.name;
   heightSpan.textContent = character?.height;
   massSpan.textContent = character?.mass;
   birthYearSpan.textContent = character?.birth_year;
-  homeworldSpan.innerHTML = `<a href="/planet.html?id=${character?.homeworld.id}">${character?.homeworld.name}</a>`;
-  const filmsLis = character?.films?.map(film => `<li><a href="/film.html?id=${film.id}">${film.title}</li>`)
+
+  // Create a hyperlink for homeworld
+  const homeworldLink = document.createElement("a");
+  homeworldLink.href = `/planet.html?id=${character?.homeworld.id}`;
+  homeworldLink.textContent = character?.homeworld.name;
+
+  // Append the hyperlink to the homeworld section
+  const homeworldInfo = document.getElementById("homeworldInfo");
+  homeworldInfo.innerHTML = "";
+  homeworldInfo.appendChild(homeworldLink);
+
+  // Display films
+  const filmsLis = character?.films?.map(
+    (film) => `<li><a href="/film.html?id=${film.id}">${film.title}</a></li>`
+  );
   filmsUl.innerHTML = filmsLis.join("");
-}
+};
+
