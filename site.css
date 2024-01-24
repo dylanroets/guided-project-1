@@ -12,7 +12,7 @@ p {
 
 :root {
   font-family: Arial, Helvetica, sans-serif;
-  --dark1: black;
+  --dark1: white;
   --light1: white;
   --dark2: darkblue;
   --light2: lightblue;
@@ -70,9 +70,9 @@ label {
 }
 
 /* Character page */
-h1#name {
+/* h1#name {
   margin: 50px;
-}
+} */
 
 #generalInfo {
   display: flex;
@@ -121,3 +121,10 @@ section#films a {
   border-radius: 5px;
   border: 1px solid var(--dark2);
 }
+
+body {
+  background-image: url(https://science.nasa.gov/wp-content/uploads/2023/04/hubble_ngc2031-jpg.webp?w=2048&format=webp);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
